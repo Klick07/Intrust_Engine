@@ -63,7 +63,7 @@ One full agent run for Arjun: prints the plan, tool calls, tokens and time. It s
    ```
 
    Or run `npm run demo:prewarm` locally with the production `DATABASE_URL` in `.env.local`.
-5. Function limits: agent routes use `maxDuration = 60`, the cron route 300. This assumes Fluid compute (the default for new projects). If Vercel rejects 300 on your plan, lower it to 60 in `app/api/cron/prewarm/route.ts` and run prewarm from your machine instead.
+5. Function limits: all routes use `maxDuration` 60 s or less, which every Vercel plan allows. If the weekly cron prewarm times out, run `npm run demo:prewarm` from your machine with the production `DATABASE_URL`.
 
 ## 5. Hindsight
 
