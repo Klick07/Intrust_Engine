@@ -8,10 +8,33 @@ Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). Qloo's taste 
 
 ## Status
 
-Phases 0–4 built: parent UI (demo mode, This week, logging, Insights, Interests, Compare) and the teacher class view (one lesson, a hook per child). Next: deploy and submit (Phase 5). Qloo runs on a hand-written mock until the hackathon key arrives. See [docs/PLAN.md](docs/PLAN.md).
+Built: parent demo, weekly agent plans, one-tap logging, insights with fading detection, school card, teacher view, live Qloo with a kid lens, offline fallback, evaluation harness. **What's next and the planned gamified experience: [ROADMAP.md](ROADMAP.md).**
+
+## For collaborators
+
+You need Node 22.9+ and Git.
+
+```bash
+git clone https://github.com/shnkdev404/Interest-Engine-for-ADHD-Children.git
+cd Interest-Engine-for-ADHD-Children
+npm install
+cp .env.example .env.local
+npm run db:seed
+npm run dev
+```
+
+Then open http://localhost:3000 and click **Explore as Arjun's parent**.
+
+- **No keys needed to start.** Without keys it uses a local database (PGlite in `.data/`), local memory and a mock Qloo catalog.
+- **Real data:** put your own keys in `.env.local`: `QLOO_API_KEY` (request one via the hackathon form in `docs/PLAN.md`), `ANTHROPIC_API_KEY`, optionally `HINDSIGHT_URL`. Keys are never committed; `.env*` is git-ignored. Ask the team for keys privately, never in an issue or commit.
+- **Before pushing:** `npm test` and `npm run typecheck`.
+- **Getting the latest:** `git pull` on `main`, then `npm install` (new packages) and restart `npm run dev`. Local database changes apply themselves on start.
+- Stop `npm run dev` before running `npm run db:seed` or `npm run demo:prewarm`: the local database allows one process at a time.
+- Read [ROADMAP.md](ROADMAP.md) §6 for how to pick up work.
 
 ## Docs
 
+- [Roadmap](ROADMAP.md)
 - [Plan](docs/PLAN.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Technical design](docs/DESIGN.md)
